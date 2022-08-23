@@ -43,7 +43,7 @@ def maximo_ternario(a: float, b: float) -> float:
     """Re-escribir utilizando el operador ternario.
     Referencia: https://docs.python.org/3/reference/expressions.html#conditional-expressions # noqa: E501
     """
-    estado = "Es mayor" if (a>b) else "Es menor"
+    return a if (a>b) else b
 
 # NO MODIFICAR - INICIO
 assert maximo_ternario(10, 5) == 10
