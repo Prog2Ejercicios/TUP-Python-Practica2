@@ -6,7 +6,6 @@ base de datos y se quieren combinar estas listas para que luego puedan crearse
 los objetos de la capa de negocio.
 """
 
-
 from typing import Any, List, Tuple
 
 nombre_articulos = ["ventana", "lámpara", "shampoo"]
@@ -14,6 +13,17 @@ precio_articulos = [100.48, 16.42, 5.20]
 
 
 def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
+    lista=[]
+    for indice in range(len(nombres)):
+        lista.append((nombres[indice],precios[indice]))
+    return tuple(lista)
+
+    # lista_final=[]
+    # for i in range(len(nombres)):
+    #     lista_parcial=(nombres[i],precios[i])
+    #     lista_final.append(lista_parcial)
+    # return tuple(lista_final)
+
     """Toma dos listas y devuelve una tupla de duplas con los componentes de
     las listas.
 
@@ -42,6 +52,10 @@ id_articulos = [6852, 1459, 3578]
 
 
 def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
+    lista=[]
+    for indice,nombre in enumerate(nombres):
+        lista.append((nombre,precios[indice],ids[indice]))
+    return tuple(lista)
     """Re-Escribir utilizando enumerate y agregando un nuevo componente.
 
     Restricción:
@@ -71,6 +85,10 @@ id_articulos = [6852, 1459, 3578]
 
 
 def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
+    lista = []
+    for nombre,precio,id in zip(nombres,precios,ids):
+        lista.append((nombre,precio,id))
+    return tuple(lista)
     """Re-Escribir utilizando zip.
 
     Restricción:
@@ -102,6 +120,11 @@ importado_articulos = [True, False, True]
 
 
 def combinar_zip_args(*args) -> Tuple[Any]:
+    lista=[]
+    for args in zip(*args):
+        lista.append((args))
+    return tuple(lista)
+
     """Re-Escribir utilizando zip y una cantidad arbitraria de componentes.
 
     Restricción:
