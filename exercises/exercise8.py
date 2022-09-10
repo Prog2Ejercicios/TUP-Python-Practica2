@@ -7,6 +7,8 @@ los objetos de la capa de negocio.
 """
 
 
+from __future__ import print_function
+from csv import list_dialects
 from typing import Any, List, Tuple
 
 nombre_articulos = ["ventana", "lámpara", "shampoo"]
@@ -22,15 +24,19 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
         - Utilizar la función range.
         - Utilizar índices.
     """
-
-
+    lista_de_listas = []
+    for i in range(3):
+        lista = [nombres[i], precios[i]]
+        lista_de_listas.append(tuple(lista))
+    tupla = tuple(lista_de_listas)
+    return tupla
 # NO MODIFICAR - INICIO
 respuesta = (
     ("ventana", 100.48),
     ("lámpara", 16.42),
     ("shampoo", 5.2),
 )
-
+##<--------------------------POR ACA
 assert combinar_basico(nombre_articulos, precio_articulos) == respuesta
 # NO MODIFICAR - FIN
 
@@ -51,8 +57,12 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
-
-
+    respuesta =[]
+    for i, nombres in enumerate(nombres):
+        lista = [nombres, precios[i], ids[i]]
+        respuesta.append(tuple(lista))
+    respuesta = tuple(respuesta)
+    return respuesta
 # NO MODIFICAR - INICIO
 respuesta = (
     ("ventana", 100.48, 6852),
@@ -80,6 +90,13 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
         - No utilizar índices.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
+    respuesta = []
+    for nombres, precios, ids in zip(nombres, precios, ids):
+        lista = [nombres, precios, ids]
+        respuesta.append(tuple(lista))
+        
+    respuesta = tuple(respuesta)
+    return respuesta 
 
 
 # NO MODIFICAR - INICIO
@@ -112,7 +129,13 @@ def combinar_zip_args(*args) -> Tuple[Any]:
 
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
+    respuesta = []
+    for valor in zip(*args):
+        respuesta.append(valor)
 
+        
+    respuesta = tuple(respuesta)
+    return respuesta  
 
 # NO MODIFICAR - INICIO
 respuesta = (
