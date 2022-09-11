@@ -16,6 +16,21 @@ def es_vocal_if(letra: str) -> bool:
 
 
 # NO MODIFICAR - INICIO
+
+    if letra == "A" or letra == "a":
+        return True
+    if letra == "I" or letra == "i":
+        return True
+    if letra == "A" or letra.lower() == "a":
+        return True
+    if letra == "E" or letra == "e":
+        return True
+    if letra == "e" or letra == "E":
+        return True
+    return False
+
+
+
 assert es_vocal_if("a")
 assert not es_vocal_if("b")
 assert es_vocal_if("A")
@@ -42,6 +57,11 @@ def es_vocal_if_in(letra: str) -> bool:
 
 
 # NO MODIFICAR - INICIO
+    variable=letra.lower()
+    if variable in "aeiou":
+        return True
+    return False
+
 assert es_vocal_if_in("a")
 assert not es_vocal_if_in("b")
 assert es_vocal_if_in("A")
@@ -61,8 +81,13 @@ def es_vocal_in(letra: str) -> bool:
         - No utilizar listas.
     """
 
+    variable=letra.lower()
+    retorno=variable in "aeiou"        
+    return retorno
 
-# NO MODIFICAR - INICIO
+# NO MODIFICAR - INICIO   
+
+
 assert es_vocal_in("a")
 assert not es_vocal_in("b")
 assert es_vocal_in("A")
