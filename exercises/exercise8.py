@@ -23,6 +23,12 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
         - Utilizar índices.
     """
 
+    resultado=[]
+    for i in range(len(nombres)):
+        resultado.append((nombres[i],precios[i]))
+    res=tuple(resultado)
+    return res
+
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -52,6 +58,15 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
 
+    resultado=[]
+    var=0
+    for i in enumerate(precios,0):
+        resultado.append((nombres[var],precios[var],id_articulos[var]))
+        var=var+1
+ 
+    res=tuple(resultado)
+    return res
+
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -80,6 +95,12 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
         - No utilizar índices.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
+
+    resultado = []
+    for i in zip(nombres, precios, ids):
+        resultado.append(i)
+    res = tuple(resultado)     
+    return res
 
 
 # NO MODIFICAR - INICIO
@@ -112,6 +133,12 @@ def combinar_zip_args(*args) -> Tuple[Any]:
 
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
+
+    resultado = []
+    for i in zip(*args):
+        resultado.append(i)
+    res = tuple(resultado)
+    return res
 
 
 # NO MODIFICAR - INICIO
