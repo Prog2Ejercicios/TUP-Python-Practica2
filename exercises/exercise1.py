@@ -1,16 +1,22 @@
 """Bloque IF, operadores lógicos, función max y operador ternario."""
 
 
+from re import A
+
+
 def maximo_basico(a: float, b: float) -> float:
+    if a > b:
+        return a
+    elif b>a:
+        return b
     """Toma dos números y devuelve el mayor.
 
     Restricciones:
         - Utilizar IF
         - No utilizar ELSE
         - No utilizar la función max
-    """
 
-
+   """
 # NO MODIFICAR - INICIO
 assert maximo_basico(10, 5) == 10
 assert maximo_basico(9, 18) == 18
@@ -21,9 +27,12 @@ assert maximo_basico(9, 18) == 18
 
 
 def maximo_libreria(a: float, b: float) -> float:
+    maximo_libreria=max(a,b)
+    return maximo_libreria
     """Re-escribir utilizando el built-in max.
     Referencia: https://docs.python.org/3/library/functions.html#max
     """
+    
 
 
 # NO MODIFICAR - INICIO
@@ -36,9 +45,12 @@ assert maximo_libreria(9, 18) == 18
 
 
 def maximo_ternario(a: float, b: float) -> float:
+    maximo_ternario= a if a>b else b
+    return maximo_ternario
     """Re-escribir utilizando el operador ternario.
     Referencia: https://docs.python.org/3/reference/expressions.html#conditional-expressions # noqa: E501
     """
+    
 
 
 # NO MODIFICAR - INICIO

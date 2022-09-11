@@ -2,7 +2,18 @@
 """
 
 
+from ast import arg
+
+
 def maximo_encadenado(a: float, b: float, c: float) -> float:
+    if b<a>c:
+        return a
+    if a<b>c:
+        return b
+    elif a<c>b:
+         return c
+
+
     """Toma 3 números y devuelve el máximo.
 
     Restricciones:
@@ -34,10 +45,13 @@ assert maximo_encadenado(24, 18, 18) == 24
 
 
 def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
-    """Re-escribir para que tome 4 parámetros, utilizar la función max.
+     maximo_cuadruple=max(a,b,c,d)
+     return maximo_cuadruple
+    #"""Re-escribir para que tome 4 parámetros, utilizar la función max"""
+    #"""Referencia: https://docs.python.org/3/library/functions.html#max"""
 
-    Referencia: https://docs.python.org/3/library/functions.html#max"""
 
+   
 
 # NO MODIFICAR - INICIO
 assert maximo_cuadruple(1, 10, 5, -5) == 10
@@ -51,6 +65,15 @@ assert maximo_cuadruple(24, 9, 18, 30) == 30
 
 
 def maximo_arbitrario(*args) -> float:
+    maximo_arbitrario=args[0]
+
+    for num in args:
+        if num > maximo_arbitrario:
+            maximo_arbitrario=num
+    return maximo_arbitrario
+
+    
+
     """Re-escribir para que tome una cantidad arbitraria de parámetros.
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#arbitrary-argument-lists # noqa: E501
     """
