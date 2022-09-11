@@ -2,6 +2,9 @@
 """
 
 
+from calendar import c
+
+
 def maximo_encadenado(a: float, b: float, c: float) -> float:
     """Toma 3 números y devuelve el máximo.
 
@@ -16,6 +19,12 @@ def maximo_encadenado(a: float, b: float, c: float) -> float:
 
 
 # NO MODIFICAR - INICIO
+    if a < b > c:
+        return b 
+    if  a < c > b:
+        return c
+    return a
+
 assert maximo_encadenado(1, 10, 5) == 10
 assert maximo_encadenado(5, 10, 1) == 10
 assert maximo_encadenado(5, 10, 5) == 10
@@ -40,6 +49,7 @@ def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
 
 
 # NO MODIFICAR - INICIO
+    return max(a,b,c,d) 
 assert maximo_cuadruple(1, 10, 5, -5) == 10
 assert maximo_cuadruple(4, 9, 18, 6) == 18
 assert maximo_cuadruple(24, 9, 18, 20) == 24
@@ -57,6 +67,7 @@ def maximo_arbitrario(*args) -> float:
 
 
 # NO MODIFICAR - INICIO
+    return max(args) 
 assert maximo_arbitrario(1, 10, 5, -5) == 10
 assert maximo_arbitrario(4, 9, 18, 6) == 18
 assert maximo_arbitrario(24, 9, 18, 20) == 24

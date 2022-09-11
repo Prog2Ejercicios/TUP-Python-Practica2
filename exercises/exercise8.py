@@ -23,6 +23,14 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
         - Utilizar índices.
     """
 
+    resultado=[]
+    for i in range(len(nombres)):
+        resultado.append((nombres[i],precios[i]))
+    res=tuple(resultado)
+    return res
+
+        
+        
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -51,7 +59,16 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
+    
 
+    resultado=[]
+    var=0
+    for i in enumerate(precios,0):
+        resultado.append((nombres[var],precios[var],id_articulos[var]))
+        var=var+1
+ 
+    res=tuple(resultado)
+    return res
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -81,6 +98,11 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
 
+    
+    lista=[]
+    lista=zip(nombres,precios,id_articulos)
+    res=tuple(lista)
+    return res
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -95,7 +117,8 @@ assert combinar_zip(nombre_articulos, precio_articulos, id_articulos) == respues
 
 ###############################################################################
 
-
+nombre_articulos = ["ventana", "lámpara", "shampoo"]
+precio_articulos = [100.48, 16.42, 5.20]
 id_articulos = [6852, 1459, 3578]
 categoria_articulos = ["hogar", "libreria", "perfumeria"]
 importado_articulos = [True, False, True]
@@ -111,8 +134,12 @@ def combinar_zip_args(*args) -> Tuple[Any]:
         - No utilizar índices.
 
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
-    """
 
+    """
+    union=[]
+    union=zip(*componentes)
+    tupla=tuple(union)
+    return tupla
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -128,6 +155,7 @@ componentes = [
     categoria_articulos,
     importado_articulos,
 ]
+
 
 assert combinar_zip_args(*componentes) == respuesta
 # NO MODIFICAR - FIN
