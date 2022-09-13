@@ -7,6 +7,7 @@ los objetos de la capa de negocio.
 """
 
 
+from operator import rshift
 from typing import Any, List, Tuple
 
 nombre_articulos = ["ventana", "lámpara", "shampoo"]
@@ -22,8 +23,12 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
         - Utilizar la función range.
         - Utilizar índices.
     """
-
-
+    lista_final=[]
+    for x in range(0, len(nombres)):
+        lista_parcial = (nombre_articulos[x], precio_articulos[x])
+        lista_final.append(lista_parcial)
+    return tuple(lista_final)
+    
 # NO MODIFICAR - INICIO
 respuesta = (
     ("ventana", 100.48),
@@ -51,7 +56,11 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
-
+    lista_final=[]
+    for x, id in enumerate(ids):
+        lista_parcial=(nombre_articulos[x], precio_articulos[x], id)
+        lista_final.append(lista_parcial)
+    return tuple(lista_final)
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -80,7 +89,11 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
         - No utilizar índices.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
-
+    lista_final=[]
+    for nombre, precio, id in zip(nombres, precios, ids):
+        lista_parcial=(nombre, precio, id)
+        lista_final.append(lista_parcial)
+    return tuple(lista_final)
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -112,6 +125,12 @@ def combinar_zip_args(*args) -> Tuple[Any]:
 
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
+    
+    lista_final=[]
+    for componentes in zip(*args):
+        lista_parcial=(componentes)
+        lista_final.append(lista_parcial)
+    return tuple(lista_final)
 
 
 # NO MODIFICAR - INICIO
