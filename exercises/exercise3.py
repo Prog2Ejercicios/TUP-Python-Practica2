@@ -1,5 +1,7 @@
 """Único return vs múltiples return."""
 
+from decimal import DivisionByZero
+from operator import truediv
 from typing import Union
 
 
@@ -8,13 +10,23 @@ def operacion_basica(a: float, b: float, multiplicar: bool) -> Union[float, str]
         - Si multiplicar es True: devuelve la multiplicación entre a y b.
         - Si multiplicar es False: devuelve la division entre a y b.
         - Si multiplicar es False y b es cero: devuelve "Operación no válida".
-
     Restricciones:
         - Utilizar un único return.
         - Utilizar IF con ELIF con ELSE.
         - No utilizar AND ni OR.
     """
 
+
+
+    if multiplicar==False:
+        try:
+            res = a/b
+        except ZeroDivisionError as exception:
+            res = (f"Operación no válida")
+    elif multiplicar==True:
+        res = a*b
+
+    return res
 
 # NO MODIFICAR - INICIO
 assert operacion_basica(1, 1, True) == 1
@@ -40,6 +52,14 @@ def operacion_multiple(a: float, b: float, multiplicar: bool) -> Union[float, st
         - No utilizar ELIF ni ELSE.
         - No utilizar AND ni OR.
     """
+
+    if multiplicar==False:
+        try:
+            return a/b
+        except ZeroDivisionError as exception:
+            return (f"Operación no válida")
+    if multiplicar==True:
+        return a*b
 
 
 # NO MODIFICAR - INICIO

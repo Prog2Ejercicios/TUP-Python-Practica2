@@ -1,6 +1,13 @@
 """Bloque IF, operadores lógicos, función max y operador ternario."""
 
 
+from multiprocessing.pool import TERMINATE
+from operator import truediv
+from re import A
+from tkinter import Y
+from turtle import Terminator
+
+
 def maximo_basico(a: float, b: float) -> float:
     """Toma dos números y devuelve el mayor.
 
@@ -9,6 +16,10 @@ def maximo_basico(a: float, b: float) -> float:
         - No utilizar ELSE
         - No utilizar la función max
     """
+    if a>b:
+        return a 
+    if b>a:
+        return b
 
 
 # NO MODIFICAR - INICIO
@@ -24,7 +35,7 @@ def maximo_libreria(a: float, b: float) -> float:
     """Re-escribir utilizando el built-in max.
     Referencia: https://docs.python.org/3/library/functions.html#max
     """
-
+    return max(a, b)
 
 # NO MODIFICAR - INICIO
 assert maximo_libreria(10, 5) == 10
@@ -39,7 +50,7 @@ def maximo_ternario(a: float, b: float) -> float:
     """Re-escribir utilizando el operador ternario.
     Referencia: https://docs.python.org/3/reference/expressions.html#conditional-expressions # noqa: E501
     """
-
+    return a if a>b else b
 
 # NO MODIFICAR - INICIO
 assert maximo_ternario(10, 5) == 10
