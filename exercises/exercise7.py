@@ -1,5 +1,7 @@
 """Any y Sets."""
 
+from operator import truediv
+from sys import set_asyncgen_hooks
 from typing import Any, Iterable
 
 
@@ -12,6 +14,12 @@ def superposicion_basico(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool
         - Utilizar dos returns.
     """
 
+    resultado = False
+    for i in lista_1:
+        for y in lista_2:
+            if i==y:
+                resultado = True
+    return resultado
 
 # NO MODIFICAR - INICIO
 test_list = [1, "hello", 35.20]
@@ -30,6 +38,11 @@ def superposicion_in(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
         - Utilizar un único bucle FOR.
         - Utilizar dos returns.
     """
+
+    for x, i in zip(lista_1, lista_2):
+        if x == i:
+            return True
+    return False
 
 
 # NO MODIFICAR - INICIO
@@ -53,7 +66,8 @@ def superposicion_any(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     Referencia: https://docs.python.org/3/library/functions.html#any
     """
 
-
+    return True if any(lista_2) == any(lista_1) else False #No lo pude resolver
+    
 # NO MODIFICAR - INICIO
 test_list = [1, "hello", 35.20]
 assert superposicion_any(test_list, (2, "world", 35.20))
@@ -74,6 +88,9 @@ def superposicion_set(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
     Referencia: https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset  # noqa: E501
     """
 
+    lista_1=set(lista_1)
+    lista_2=(lista_2)
+    return (lista_1.intersection(lista_2))
 
 # NO MODIFICAR - INICIO
 test_list = [1, "hello", 35.20]
