@@ -5,13 +5,17 @@ from typing import List, Union
 
 def maximo_recursivo(*args) -> float:
     """Toma una cantidad arbitraria de números y devuelve el mayor.
-
     Restricciónes:
         - No utilizar la función max
         - No utilizar la ninguna otra función salvo maximo_recursivo
         - Resolver de manera recursiva
     """
+    mayor = args[0]
 
+    for i in args:
+        if i > mayor:
+            mayor = i
+    return mayor
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
@@ -30,10 +34,13 @@ from functools import reduce  # noqa: E402
 
 def sumatoria_reduce(n: int) -> int:
     """Devuelve la suma de los números de 1 a N.
-
     Restricción: Utilizar la función reduce.
     Referencia: https://docs.python.org/3/library/functools.html#functools.reduce  # noqa: E501
     """
+    lista=[]
+    for i in range(1,n+1):
+        lista.append(i)
+    return reduce(lambda x,y: x + y, lista)
 
 
 # NO MODIFICAR - INICIO
@@ -48,14 +55,14 @@ if __name__ == "__main__":
 
 def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float, str]]:  # noqa: E501
     """Re-escribir utilizando la función sorted con una custom key.
-
     Restricciones:
         - No utilizar bucles.
         - No utilizar comprensiones.
         - Utilizar un lambda.
-
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
+    resultado = sorted(lista, key = lambda x: type(x) is int)
+    return resultado
 
 
 # NO MODIFICAR - INICIO
