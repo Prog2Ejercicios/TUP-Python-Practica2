@@ -15,8 +15,15 @@ def suma_cubo_pares_for(numeros: Iterable[int]) -> int:
         - https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions # noqa: E501
         - https://docs.python.org/3/library/functions.html#sum
     """
+    numeros_cuadrados=[]
+    suma_pares = 0
 
-
+    for i in numeros:
+        numeros_cuadrados.append(i ** 3)
+    for i in numeros_cuadrados:
+        if (i%2)==0:
+            suma_pares = suma_pares + i
+    return suma_pares
 # NO MODIFICAR - INICIO
 assert suma_cubo_pares_for([1, 2, 3, 4, 5, 6]) == 288
 # NO MODIFICAR - FIN
@@ -33,8 +40,7 @@ def suma_cubo_pares_sum_list(numeros: Iterable[int]) -> int:
         - https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions # noqa: E501
         - https://docs.python.org/3/library/functions.html#sum
     """
-
-
+    return sum([i ** 3 for i in numeros if not (i%2) != 0 ])
 # NO MODIFICAR - INICIO
 assert suma_cubo_pares_sum_list([1, 2, 3, 4, 5, 6]) == 288
 # NO MODIFICAR - FIN
@@ -52,7 +58,7 @@ Escribir una función lambda que eleve los elementos al cubo
 Restricción: Utilizar List, map y lambda y la variable numeros
 """
 
-numeros_al_cubo =  # Completar
+numeros_al_cubo = list(map(lambda i: i ** 3, numeros)) # Completar
 
 """
 Escribir una función lambda que permita filtrar todos los elementos pares
@@ -60,7 +66,7 @@ Escribir una función lambda que permita filtrar todos los elementos pares
 Restricción: Utilizar List, filter, lambda y la variable numeros_al_cubo
 """
 
-numeros_al_cubo_pares =  # Completar
+numeros_al_cubo_pares = list(filter(lambda x: x % 2 == 0, numeros_al_cubo)) # Completar
 
 
 """
@@ -71,7 +77,7 @@ Restricción: Utilizar reduce, lambda y la variable numeros_al_cubo_pares
 
 from functools import reduce  # noqa: E402
 
-suma_numeros_al_cubo_pares =  # Completar
+suma_numeros_al_cubo_pares = reduce(lambda x, y: x + y , numeros_al_cubo_pares) # Completar
 
 
 # NO MODIFICAR - INICIO
