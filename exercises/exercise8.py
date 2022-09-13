@@ -25,12 +25,16 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
 
 
 # NO MODIFICAR - INICIO
+    lista = []
+    for i in range(3):
+        lista2 = [nombres[i],precios[i]]
+        lista.append(tuple(lista2))
+    return tuple(lista)
 respuesta = (
     ("ventana", 100.48),
     ("lámpara", 16.42),
     ("shampoo", 5.2),
 )
-
 assert combinar_basico(nombre_articulos, precio_articulos) == respuesta
 # NO MODIFICAR - FIN
 
@@ -54,12 +58,16 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
 
 # NO MODIFICAR - INICIO
+    lista = []
+    for i, nombres in enumerate(nombres):
+        lista_1 = [nombres, precios[i], ids[i]]
+        lista.append(tuple(lista_1))
+    return tuple(lista)
 respuesta = (
     ("ventana", 100.48, 6852),
     ("lámpara", 16.42, 1459),
     ("shampoo", 5.2, 3578),
 )
-
 assert combinar_enumerate(nombre_articulos, precio_articulos, id_articulos) == respuesta  # noqa: E501
 # NO MODIFICAR - FIN
 
@@ -83,6 +91,11 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
 
 
 # NO MODIFICAR - INICIO
+    lista = []
+    for nombres, precios, ids in zip(nombres, precios, ids):
+        lista_1 = [nombres, precios, ids]
+        lista.append(tuple(lista_1))
+    return tuple(lista)
 respuesta = (
     ("ventana", 100.48, 6852),
     ("lámpara", 16.42, 1459),
@@ -114,13 +127,16 @@ def combinar_zip_args(*args) -> Tuple[Any]:
     """
 
 
-# NO MODIFICAR - INICIO
+# NO MODIFICAR - INICIO    (PREGUNTAR!!)
+    lista = []
+    for i in zip(*args):
+        lista.append[i]
+    return tuple(lista)
 respuesta = (
     ("ventana", 100.48, 6852, "hogar", True),
     ("lámpara", 16.42, 1459, "libreria", False),
     ("shampoo", 5.2, 3578, "perfumeria", True),
 )
-
 componentes = [
     nombre_articulos,
     precio_articulos,
@@ -128,6 +144,5 @@ componentes = [
     categoria_articulos,
     importado_articulos,
 ]
-
 assert combinar_zip_args(*componentes) == respuesta
 # NO MODIFICAR - FIN

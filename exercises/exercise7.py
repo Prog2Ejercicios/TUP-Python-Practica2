@@ -14,6 +14,11 @@ def superposicion_basico(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool
 
 
 # NO MODIFICAR - INICIO
+    for i in lista_1:
+        for u in lista_2:
+            if i == u:
+                return True
+    return False         
 test_list = [1, "hello", 35.20]
 assert superposicion_basico(test_list, (2, "world", 35.20))
 assert not superposicion_basico(test_list, (2, "world", 30.85))
@@ -33,6 +38,10 @@ def superposicion_in(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
 
 
 # NO MODIFICAR - INICIO
+    for i in lista_1:
+        if i in lista_2:
+            return True
+    return False
 test_list = [1, "hello", 35.20]
 assert superposicion_in(test_list, (2, "world", 35.20))
 assert not superposicion_in(test_list, (2, "world", 30.85))
@@ -55,6 +64,7 @@ def superposicion_any(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
 
 
 # NO MODIFICAR - INICIO
+    return any ( i in lista_1 for i in lista_2)
 test_list = [1, "hello", 35.20]
 assert superposicion_any(test_list, (2, "world", 35.20))
 assert not superposicion_any(test_list, (2, "world", 30.85))
@@ -76,6 +86,9 @@ def superposicion_set(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
 
 
 # NO MODIFICAR - INICIO
+    conjunto1 = set(lista_1)
+    conjunto2 = set(lista_2)
+    return bool (conjunto1.intersection(conjunto2))
 test_list = [1, "hello", 35.20]
 assert superposicion_set(test_list, (2, "world", 35.20))
 assert not superposicion_set(test_list, (2, "world", 30.85))
