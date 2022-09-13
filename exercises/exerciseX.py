@@ -12,6 +12,11 @@ def maximo_recursivo(*args) -> float:
         - Resolver de manera recursiva
     """
 
+    mayor = args[0]
+    for i in args:
+        if i > mayor:
+            mayor = i
+    return mayor
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
@@ -35,6 +40,7 @@ def sumatoria_reduce(n: int) -> int:
     Referencia: https://docs.python.org/3/library/functools.html#functools.reduce  # noqa: E501
     """
 
+    return reduce(lambda x, y: x + y, (i+1 for i in range(n)))
 
 # NO MODIFICAR - INICIO
 if __name__ == "__main__":
@@ -57,6 +63,7 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
 
+    
 
 # NO MODIFICAR - INICIO
 assert numeros_al_final_sorted([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]  # noqa: E501
