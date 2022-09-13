@@ -9,6 +9,11 @@ def sumatoria_basico(n: int) -> int:
 
 
 # NO MODIFICAR - INICIO
+
+    n=0
+    for i in range (1 , 100):
+        n +=i
+
 assert sumatoria_basico(1) == 1
 assert sumatoria_basico(100) == 5050
 # NO MODIFICAR - FIN
@@ -26,14 +31,20 @@ def sumatoria_sum(n: int) -> int:
 
 
 # NO MODIFICAR - INICIO
+
+I={i:i for i in range(1,100) }
+n=sum(I.values())
+print(n)
 assert sumatoria_sum(1) == 1
 assert sumatoria_sum(100) == 5050
+
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
+from traceback import format_tb
 from typing import Iterable  # noqa: E402
 
 
@@ -50,6 +61,12 @@ def multiplicar_basico(numeros: Iterable[float]) -> float:
 
 
 # NO MODIFICAR - INICIO
+    if numeros != 0:
+        for i in range (1,n):
+            multiplicar_basico = i * i 
+    print(0)
+
+
 assert multiplicar_basico([1, 2, 3, 4]) == 24
 assert multiplicar_basico([2, 5]) == 10
 assert multiplicar_basico([]) == 0

@@ -25,6 +25,14 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
 
 
 # NO MODIFICAR - INICIO
+
+    resultado=[]
+    for i in range(len(nombres)):
+        resultado.append((nombres[i],precios[i]))
+    res=tuple(resultado)
+    return res
+
+
 respuesta = (
     ("ventana", 100.48),
     ("lámpara", 16.42),
@@ -54,6 +62,17 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
 
 # NO MODIFICAR - INICIO
+
+    resultado=[]
+    var=0
+    for i in enumerate(precios,0):
+        resultado.append((nombres[var],precios[var],id_articulos[var]))
+        var=var+1
+ 
+    res=tuple(resultado)
+    return res
+
+
 respuesta = (
     ("ventana", 100.48, 6852),
     ("lámpara", 16.42, 1459),
@@ -80,6 +99,11 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
         - No utilizar índices.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
+    listado_final=[]
+    for x,id in enumerate(ids):
+        listado_parcial=(nombres[x],precios[x],id)
+        listado_final.append(listado_parcial)
+    return tuple(listado_final)
 
 
 # NO MODIFICAR - INICIO
@@ -112,6 +136,12 @@ def combinar_zip_args(*args) -> Tuple[Any]:
 
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
+    listado_final=[]
+    for nombre,precios,ids in zip(nombre,precios,ids):
+        listado_parcial=(nombre,precios,ids)
+        print(listado_parcial)
+        listado_final.append(listado_parcial)
+    return tuple(listado_final)
 
 
 # NO MODIFICAR - INICIO
