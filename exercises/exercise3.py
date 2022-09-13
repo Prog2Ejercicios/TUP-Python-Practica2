@@ -1,5 +1,8 @@
 """Único return vs múltiples return."""
 
+from audioop import mul
+from operator import truediv
+from pickle import TRUE
 from typing import Union
 
 
@@ -14,8 +17,14 @@ def operacion_basica(a: float, b: float, multiplicar: bool) -> Union[float, str]
         - Utilizar IF con ELIF con ELSE.
         - No utilizar AND ni OR.
     """
-
-
+    var1 = 0
+    if multiplicar == True:
+        var1 = a*b
+    elif b != 0:
+        var1 = a/b
+    else:
+        var1="Operación no válida"
+    return var1
 # NO MODIFICAR - INICIO
 assert operacion_basica(1, 1, True) == 1
 assert operacion_basica(1, 1, False) == 1
@@ -40,7 +49,11 @@ def operacion_multiple(a: float, b: float, multiplicar: bool) -> Union[float, st
         - No utilizar ELIF ni ELSE.
         - No utilizar AND ni OR.
     """
-
+    if multiplicar == True:
+        return a*b
+    if b != 0:
+        return a/b
+    return "Operación no válida"
 
 # NO MODIFICAR - INICIO
 assert operacion_multiple(1, 1, True) == 1
