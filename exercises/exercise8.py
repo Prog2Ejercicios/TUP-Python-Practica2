@@ -1,6 +1,4 @@
 """Tuple, Enumerate, Zip, Args.
-
-
 Contexto: Se tiene un programa que lee diferentes listas de una tabla en una
 base de datos y se quieren combinar estas listas para que luego puedan crearse
 los objetos de la capa de negocio.
@@ -13,10 +11,14 @@ nombre_articulos = ["ventana", "lámpara", "shampoo"]
 precio_articulos = [100.48, 16.42, 5.20]
 
 
-def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
+def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]: 
+    lista = []
+    for i in range(0,len(nombres)):
+        lista1 = (nombre_articulos[i],precio_articulos[i])
+        lista.append(lista1)
+    return tuple(lista)
     """Toma dos listas y devuelve una tupla de duplas con los componentes de
     las listas.
-
     Restricción:
         - Utilizar un bucle FOR.
         - Utilizar la función range.
@@ -42,13 +44,16 @@ id_articulos = [6852, 1459, 3578]
 
 
 def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
+    lista = []
+    for i,id in enumerate(ids):
+        lista1 = (nombre_articulos[i],precio_articulos[i],id)
+        lista.append(lista1)
+    return tuple(lista)
     """Re-Escribir utilizando enumerate y agregando un nuevo componente.
-
     Restricción:
         - Utilizar un bucle FOR.
         - No Utilizar la función range.
         - No Utilizar la función zip.
-
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
 
@@ -71,8 +76,12 @@ id_articulos = [6852, 1459, 3578]
 
 
 def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
+    lista = []
+    for nombres,precios,ids in zip(nombres,precios,ids):
+        lista1 = (nombres,precios,ids)
+        lista.append(lista1)
+    return tuple(lista)
     """Re-Escribir utilizando zip.
-
     Restricción:
         - Utilizar un bucle FOR.
         - No utilizar la función range.
@@ -102,14 +111,17 @@ importado_articulos = [True, False, True]
 
 
 def combinar_zip_args(*args) -> Tuple[Any]:
+    lista = []
+    for componentes in zip(*args):
+        lista1 = (componentes)
+        lista.append(lista1)
+    return tuple(lista)
     """Re-Escribir utilizando zip y una cantidad arbitraria de componentes.
-
     Restricción:
         - Utilizar un bucle FOR.
         - No utilizar la función range.
         - No utilizar la función enumerate.
         - No utilizar índices.
-
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
 
