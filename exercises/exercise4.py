@@ -1,6 +1,9 @@
 """Expresiones Booleanas."""
 
 
+from operator import truediv
+
+
 def es_vocal_if(letra: str) -> bool:
     """Toma un string y devuelve un booleano en base a si letra es una vocal o
     no.
@@ -16,6 +19,24 @@ def es_vocal_if(letra: str) -> bool:
 
 
 # NO MODIFICAR - INICIO
+    print(letra)
+    letra= letra.lower()
+    print(letra)
+
+    if letra == "a":
+        return True
+    if letra == "e":
+        return True
+    if letra == "i":
+        return True
+    if letra == "o":
+        return True
+    if letra == "u":
+        return True
+    return False    
+
+
+
 assert es_vocal_if("a")
 assert not es_vocal_if("b")
 assert es_vocal_if("A")
@@ -42,6 +63,13 @@ def es_vocal_if_in(letra: str) -> bool:
 
 
 # NO MODIFICAR - INICIO
+
+    letra= letra.lower()
+
+    if letra in "aeiou":
+        return True
+    return False    
+
 assert es_vocal_if_in("a")
 assert not es_vocal_if_in("b")
 assert es_vocal_if_in("A")
@@ -63,6 +91,11 @@ def es_vocal_in(letra: str) -> bool:
 
 
 # NO MODIFICAR - INICIO
+
+    letra=letra.lower()
+
+    return letra in "aeiou"
+
 assert es_vocal_in("a")
 assert not es_vocal_in("b")
 assert es_vocal_in("A")
