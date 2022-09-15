@@ -4,13 +4,6 @@ from typing import Union
 
 
 def operacion_basica(a: float, b: float, multiplicar: bool) -> Union[float, str]:  # noqa: E501
-    if multiplicar:
-        resultado=a*b
-    elif (b != 0):
-        resultado= a/b
-    else:
-        resultado= "Operación no válida"
-    return resultado
     """Toma dos números (a, b) y un booleano (multiplicar):
         - Si multiplicar es True: devuelve la multiplicación entre a y b.
         - Si multiplicar es False: devuelve la division entre a y b.
@@ -20,6 +13,26 @@ def operacion_basica(a: float, b: float, multiplicar: bool) -> Union[float, str]
         - Utilizar IF con ELIF con ELSE.
         - No utilizar AND ni OR.
     """
+
+def operacion_basica(a: float, b: float, multiplicar: bool): 
+        if (multiplicar == True):
+            print(" A * B = ", a*b)
+        elif (multiplicar == False):
+            print(" A / B = ", a/b)
+        else:
+            print("Operaciónno válida")
+
+
+print("Ingrese primer valor: ")
+a=float(input())
+print("Ingrese segundo valor: ")
+b=float(input())
+print("multiplicar es verdadero o falso?")
+multiplicar=bool(input())
+
+print(operacion_basica(a,b,multiplicar))
+
+-----------------------------------------------------------
 
 
 # NO MODIFICAR - INICIO
@@ -38,12 +51,6 @@ assert operacion_basica(1, 0, False) == "Operación no válida"
 
 
 def operacion_multiple(a: float, b: float, multiplicar: bool) -> Union[float, str]:  # noqa: E501
-    if multiplicar:
-        return a*b
-    if not multiplicar and b!=0:
-        return a/b
-    return "Operación no válida"
-        
     """Re-Escribir el ejercicio anterior utilizando tres returns.
     Restricciones:
         - Utilizar 2 IF.
