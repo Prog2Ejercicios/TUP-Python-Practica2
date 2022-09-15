@@ -1,64 +1,69 @@
-"""Comparaciones Encadenadas, Cantidad Arbitraria de Parámetros, Recursividad.
-"""
+"""For, Sum, Reduce."""
 
 
-def maximo_encadenado(a: float, b: float, c: float) -> float:
-    """Toma 3 números y devuelve el máximo.
+def sumatoria_basico(n: int) -> int:
+    suma=0
+    for i in range(1,n+1):
+        suma +=  i
+    return suma
 
+    """Devuelve la suma de los números de 1 a N.
+    Restricción: Utilizar un bucle FOR.
+    """
+
+
+# NO MODIFICAR - INICIO
+assert sumatoria_basico(1) == 1
+assert sumatoria_basico(100) == 5050
+# NO MODIFICAR - FIN
+
+
+###############################################################################
+
+
+def sumatoria_sum(n: int) -> int:
+    return sum(range(n+1))
+    """Re-Escribir utilizando la función sum.
+    Restricción: No utilizar bucles (FOR, WHILE, etc)
+    Referencia: https://docs.python.org/3/library/functions.html#sum
+    """
+
+
+# NO MODIFICAR - INICIO
+assert sumatoria_sum(1) == 1
+assert sumatoria_sum(100) == 5050
+# NO MODIFICAR - FIN
+
+
+###############################################################################
+
+
+from typing import Iterable  # noqa: E402
+
+
+def multiplicar_basico(numeros: Iterable[float]) -> float:
+
+    if len(numeros)==0:
+        return 0
+    
+    producto = float(1) 
+    for i in numeros:
+        producto *= i
+    return producto
+
+    """Toma un lista de números y devuelve el producto todos los númereos. Si
+    la lista está vacia debe devolver 0.
     Restricciones:
-        - Utilizar comparaciones encadenadas.
-        - Utilizar UNICAMENTE dos IFs
+        - No usar bibliotecas auxiliares (Numpy, math, pandas).
+        - Utilizar un bucle FOR
+        - Utilizar múltiples Return
         - No utilizar ELSE
-        - No utilizar AND, OR o NOT
-
-    Referencia: https://docs.python.org/3/reference/expressions.html#comparisons # noqa: E501
     """
 
 
 # NO MODIFICAR - INICIO
-assert maximo_encadenado(1, 10, 5) == 10
-assert maximo_encadenado(5, 10, 1) == 10
-assert maximo_encadenado(5, 10, 5) == 10
-
-assert maximo_encadenado(4, 9, 18) == 18
-assert maximo_encadenado(9, 4, 18) == 18
-assert maximo_encadenado(9, 9, 18) == 18
-
-assert maximo_encadenado(24, 9, 18) == 24
-assert maximo_encadenado(24, 18, 9) == 24
-assert maximo_encadenado(24, 18, 18) == 24
-# NO MODIFICAR - FIN
-
-
-###############################################################################
-
-
-def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
-    """Re-escribir para que tome 4 parámetros, utilizar la función max.
-
-    Referencia: https://docs.python.org/3/library/functions.html#max"""
-
-
-# NO MODIFICAR - INICIO
-assert maximo_cuadruple(1, 10, 5, -5) == 10
-assert maximo_cuadruple(4, 9, 18, 6) == 18
-assert maximo_cuadruple(24, 9, 18, 20) == 24
-assert maximo_cuadruple(24, 9, 18, 30) == 30
-# NO MODIFICAR - FIN
-
-
-###############################################################################
-
-
-def maximo_arbitrario(*args) -> float:
-    """Re-escribir para que tome una cantidad arbitraria de parámetros.
-    Referencia: https://docs.python.org/3/tutorial/controlflow.html#arbitrary-argument-lists # noqa: E501
-    """
-
-
-# NO MODIFICAR - INICIO
-assert maximo_arbitrario(1, 10, 5, -5) == 10
-assert maximo_arbitrario(4, 9, 18, 6) == 18
-assert maximo_arbitrario(24, 9, 18, 20) == 24
-assert maximo_arbitrario(24, 9, 18, 30) == 30
+assert multiplicar_basico([1, 2, 3, 4]) == 24
+assert multiplicar_basico([2, 5]) == 10
+assert multiplicar_basico([]) == 0
+assert multiplicar_basico([1, 2, 3, 0, 4, 5]) == 0
 # NO MODIFICAR - FIN

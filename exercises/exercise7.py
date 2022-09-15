@@ -1,82 +1,53 @@
-"""Any y Sets."""
-
-from typing import Any, Iterable
+"""Bloque IF, operadores lógicos, función max y operador ternario."""
 
 
-def superposicion_basico(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:  # noqa: E501
-    """Toma dos listas y devuelve un booleano en base a si tienen al menos 1
-    elemento en común.
+def maximo_basico(a: float, b: float) -> float:
+    
+    if (a > b):
+        return a
+    return b
 
+"""Toma dos números y devuelve el mayor.
     Restricciones:
-        - Utilizar dos bucles FOR anidados.
-        - Utilizar dos returns.
+        - Utilizar IF
+        - No utilizar ELSE
+        - No utilizar la función max
     """
 
 
 # NO MODIFICAR - INICIO
-test_list = [1, "hello", 35.20]
-assert superposicion_basico(test_list, (2, "world", 35.20))
-assert not superposicion_basico(test_list, (2, "world", 30.85))
+assert maximo_basico(10, 5) == 10
+assert maximo_basico(9, 18) == 18
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
-def superposicion_in(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
-    """Re-Escribir utilizando un sólo bucle y el operador IN.
-
-    Restricciones:
-        - Utilizar un único bucle FOR.
-        - Utilizar dos returns.
+def maximo_libreria(a: float, b: float) -> float:
+    return max(a,b)
+    """Re-escribir utilizando el built-in max.
+    Referencia: https://docs.python.org/3/library/functions.html#max
     """
 
 
 # NO MODIFICAR - INICIO
-test_list = [1, "hello", 35.20]
-assert superposicion_in(test_list, (2, "world", 35.20))
-assert not superposicion_in(test_list, (2, "world", 30.85))
+assert maximo_libreria(10, 5) == 10
+assert maximo_libreria(9, 18) == 18
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
-def superposicion_any(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
-    """Re-Escribir utilizando la funcion any.
-
-    Restricciones:
-        - No utilizar bucles.
-        - Utilizar una comprensión.
-        - La solución debe tener 1 línea.
-
-    Referencia: https://docs.python.org/3/library/functions.html#any
+def maximo_ternario(a: float, b: float) -> float:
+    return a if a>b else b
+    """Re-escribir utilizando el operador ternario.
+    Referencia: https://docs.python.org/3/reference/expressions.html#conditional-expressions # noqa: E501
     """
 
 
 # NO MODIFICAR - INICIO
-test_list = [1, "hello", 35.20]
-assert superposicion_any(test_list, (2, "world", 35.20))
-assert not superposicion_any(test_list, (2, "world", 30.85))
-# NO MODIFICAR - FIN
-
-
-###############################################################################
-
-
-def superposicion_set(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
-    """Re-Escribir utilizando conjuntos (sets).
-
-    Restricciones:
-        - Resolver sólo utilizando operaciones de conjuntos
-        - No utilizar ANY, ALL, FOR, IF ni COMPRENSIONES
-
-    Referencia: https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset  # noqa: E501
-    """
-
-
-# NO MODIFICAR - INICIO
-test_list = [1, "hello", 35.20]
-assert superposicion_set(test_list, (2, "world", 35.20))
-assert not superposicion_set(test_list, (2, "world", 30.85))
+assert maximo_ternario(10, 5) == 10
+assert maximo_ternario(9, 18) == 18
 # NO MODIFICAR - FIN

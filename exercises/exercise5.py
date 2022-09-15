@@ -1,57 +1,148 @@
-"""For, Sum, Reduce."""
+"""Tuple, Enumerate, Zip, Args.
+Contexto: Se tiene un programa que lee diferentes listas de una tabla en una
+base de datos y se quieren combinar estas listas para que luego puedan crearse
+los objetos de la capa de negocio.
+"""
+
+from typing import Any, List, Tuple
+
+nombre_articulos = ["ventana", "lámpara", "shampoo"]
+precio_articulos = [100.48, 16.42, 5.20]
 
 
-def sumatoria_basico(n: int) -> int:
-    """Devuelve la suma de los números de 1 a N.
+def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
+    lista=[]
+    for indice in range(len(nombres)):
+        lista.append((nombres[indice],precios[indice]))
+    return tuple(lista)
 
-    Restricción: Utilizar un bucle FOR.
+    # lista_final=[]
+    # for i in range(len(nombres)):
+    #     lista_parcial=(nombres[i],precios[i])
+    #     lista_final.append(lista_parcial)
+    # return tuple(lista_final)
+
+    """Toma dos listas y devuelve una tupla de duplas con los componentes de
+    las listas.
+    Restricción:
+        - Utilizar un bucle FOR.
+        - Utilizar la función range.
+        - Utilizar índices.
     """
 
 
 # NO MODIFICAR - INICIO
-assert sumatoria_basico(1) == 1
-assert sumatoria_basico(100) == 5050
+respuesta = (
+    ("ventana", 100.48),
+    ("lámpara", 16.42),
+    ("shampoo", 5.2),
+)
+
+assert combinar_basico(nombre_articulos, precio_articulos) == respuesta
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
-def sumatoria_sum(n: int) -> int:
-    """Re-Escribir utilizando la función sum.
+id_articulos = [6852, 1459, 3578]
 
-    Restricción: No utilizar bucles (FOR, WHILE, etc)
-    Referencia: https://docs.python.org/3/library/functions.html#sum
+
+def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
+    lista=[]
+    for indice,nombre in enumerate(nombres):
+        lista.append((nombre,precios[indice],ids[indice]))
+    return tuple(lista)
+    """Re-Escribir utilizando enumerate y agregando un nuevo componente.
+    Restricción:
+        - Utilizar un bucle FOR.
+        - No Utilizar la función range.
+        - No Utilizar la función zip.
+    Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
 
 
 # NO MODIFICAR - INICIO
-assert sumatoria_sum(1) == 1
-assert sumatoria_sum(100) == 5050
+respuesta = (
+    ("ventana", 100.48, 6852),
+    ("lámpara", 16.42, 1459),
+    ("shampoo", 5.2, 3578),
+)
+
+assert combinar_enumerate(nombre_articulos, precio_articulos, id_articulos) == respuesta  # noqa: E501
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
-from typing import Iterable  # noqa: E402
+id_articulos = [6852, 1459, 3578]
 
 
-def multiplicar_basico(numeros: Iterable[float]) -> float:
-    """Toma un lista de números y devuelve el producto todos los númereos. Si
-    la lista está vacia debe devolver 0.
-
-    Restricciones:
-        - No usar bibliotecas auxiliares (Numpy, math, pandas).
-        - Utilizar un bucle FOR
-        - Utilizar múltiples Return
-        - No utilizar ELSE
+def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
+    lista = []
+    for nombre,precio,id in zip(nombres,precios,ids):
+        lista.append((nombre,precio,id))
+    return tuple(lista)
+    """Re-Escribir utilizando zip.
+    Restricción:
+        - Utilizar un bucle FOR.
+        - No utilizar la función range.
+        - No utilizar la función enumerate.
+        - No utilizar índices.
+    Referencia: https://docs.python.org/3/library/functions.html#zip
     """
 
 
 # NO MODIFICAR - INICIO
-assert multiplicar_basico([1, 2, 3, 4]) == 24
-assert multiplicar_basico([2, 5]) == 10
-assert multiplicar_basico([]) == 0
-assert multiplicar_basico([1, 2, 3, 0, 4, 5]) == 0
+respuesta = (
+    ("ventana", 100.48, 6852),
+    ("lámpara", 16.42, 1459),
+    ("shampoo", 5.2, 3578),
+)
+
+assert combinar_zip(nombre_articulos, precio_articulos, id_articulos) == respuesta  # noqa: E501
+# NO MODIFICAR - FIN
+
+
+###############################################################################
+
+
+id_articulos = [6852, 1459, 3578]
+categoria_articulos = ["hogar", "libreria", "perfumeria"]
+importado_articulos = [True, False, True]
+
+
+def combinar_zip_args(*args) -> Tuple[Any]:
+    lista=[]
+    for args in zip(*args):
+        lista.append((args))
+    return tuple(lista)
+
+    """Re-Escribir utilizando zip y una cantidad arbitraria de componentes.
+    Restricción:
+        - Utilizar un bucle FOR.
+        - No utilizar la función range.
+        - No utilizar la función enumerate.
+        - No utilizar índices.
+    Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
+    """
+
+
+# NO MODIFICAR - INICIO
+respuesta = (
+    ("ventana", 100.48, 6852, "hogar", True),
+    ("lámpara", 16.42, 1459, "libreria", False),
+    ("shampoo", 5.2, 3578, "perfumeria", True),
+)
+
+componentes = [
+    nombre_articulos,
+    precio_articulos,
+    id_articulos,
+    categoria_articulos,
+    importado_articulos,
+]
+
+assert combinar_zip_args(*componentes) == respuesta
 # NO MODIFICAR - FIN

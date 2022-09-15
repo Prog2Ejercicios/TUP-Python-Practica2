@@ -1,54 +1,47 @@
-"""Único return vs múltiples return."""
+"""Type, Comprensión de Listas, Sorted y Filter."""
 
-from typing import Union
+from typing import List, Union
 
 
-def operacion_basica(a: float, b: float, multiplicar: bool) -> Union[float, str]:  # noqa: E501
-    """Toma dos números (a, b) y un booleano (multiplicar):
-        - Si multiplicar es True: devuelve la multiplicación entre a y b.
-        - Si multiplicar es False: devuelve la division entre a y b.
-        - Si multiplicar es False y b es cero: devuelve "Operación no válida".
-
+def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float, str]]:  # noqa: E501
+    listastr=[]
+    listaint=[]
+    for i in lista:
+        if type(i) is int:
+            listaint.append(i)
+        else:
+            listastr.append(i)
+    listastr.extend(listaint)
+    return listastr
+    """Toma una lista de enteros y strings y devuelve una lista con todos los
+    elementos numéricos al final.
     Restricciones:
-        - Utilizar un único return.
-        - Utilizar IF con ELIF con ELSE.
-        - No utilizar AND ni OR.
+        - Utilizar un bucle FOR.
+        - Utilizar la función type.
+        - No utilizar índices.
     """
 
 
 # NO MODIFICAR - INICIO
-assert operacion_basica(1, 1, True) == 1
-assert operacion_basica(1, 1, False) == 1
-assert operacion_basica(25, 5, True) == 125
-assert operacion_basica(25, 5, False) == 5
-assert operacion_basica(0, 5, True) == 0
-assert operacion_basica(0, 5, False) == 0
-assert operacion_basica(1, 0, True) == 0
-assert operacion_basica(1, 0, False) == "Operación no válida"
+assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]  # noqa: E501
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
-def operacion_multiple(a: float, b: float, multiplicar: bool) -> Union[float, str]:  # noqa: E501
-    """Re-Escribir el ejercicio anterior utilizando tres returns.
-
+def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:  # noqa: E501
+    letras = [x for x in lista if type(x) is str]
+    numeros = [x for x in lista if type(x) is int]
+    letras.extend(numeros)
+    return letras
+    """Re-escribir utilizando comprensión de listas.
     Restricciones:
-        - Utilizar 2 IF.
-        - No Utilizar IF anidados.
-        - No utilizar ELIF ni ELSE.
-        - No utilizar AND ni OR.
+        - No utilizar bucles.
+        - Utilizar dos comprensiones de listas.
     """
 
 
 # NO MODIFICAR - INICIO
-assert operacion_multiple(1, 1, True) == 1
-assert operacion_multiple(1, 1, False) == 1
-assert operacion_multiple(25, 5, True) == 125
-assert operacion_multiple(25, 5, False) == 5
-assert operacion_multiple(0, 5, True) == 0
-assert operacion_multiple(0, 5, False) == 0
-assert operacion_multiple(1, 0, True) == 0
-assert operacion_multiple(1, 0, False) == "Operación no válida"
+assert numeros_al_final_comprension([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]  # noqa: E501
 # NO MODIFICAR - FIN

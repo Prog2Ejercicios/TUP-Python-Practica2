@@ -1,133 +1,69 @@
-"""Tuple, Enumerate, Zip, Args.
-
-
-Contexto: Se tiene un programa que lee diferentes listas de una tabla en una
-base de datos y se quieren combinar estas listas para que luego puedan crearse
-los objetos de la capa de negocio.
+"""Comparaciones Encadenadas, Cantidad Arbitraria de Parámetros, Recursividad.
 """
 
 
-from typing import Any, List, Tuple
-
-nombre_articulos = ["ventana", "lámpara", "shampoo"]
-precio_articulos = [100.48, 16.42, 5.20]
-
-
-def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
-    """Toma dos listas y devuelve una tupla de duplas con los componentes de
-    las listas.
-
-    Restricción:
-        - Utilizar un bucle FOR.
-        - Utilizar la función range.
-        - Utilizar índices.
+def maximo_encadenado(a: float, b: float, c: float) -> float:
+    if (a > b and a > c):
+        return a
+    if (b > a and b > c ):
+        return b
+    return c
+    """Toma 3 números y devuelve el máximo.
+    
+    Restricciones:
+        - Utilizar comparaciones encadenadas.
+        - Utilizar UNICAMENTE dos IFs
+        - No utilizar ELSE
+        - No utilizar AND, OR o NOT
+    Referencia: https://docs.python.org/3/reference/expressions.html#comparisons # noqa: E501
     """
 
 
 # NO MODIFICAR - INICIO
-respuesta = (
-    ("ventana", 100.48),
-    ("lámpara", 16.42),
-    ("shampoo", 5.2),
-)
+assert maximo_encadenado(1, 10, 5) == 10
+assert maximo_encadenado(5, 10, 1) == 10
+assert maximo_encadenado(5, 10, 5) == 10
 
-assert combinar_basico(nombre_articulos, precio_articulos) == respuesta
+assert maximo_encadenado(4, 9, 18) == 18
+assert maximo_encadenado(9, 4, 18) == 18
+assert maximo_encadenado(9, 9, 18) == 18
+
+assert maximo_encadenado(24, 9, 18) == 24
+assert maximo_encadenado(24, 18, 9) == 24
+assert maximo_encadenado(24, 18, 18) == 24
 # NO MODIFICAR - FIN
 
 
 ###############################################################################
 
 
-id_articulos = [6852, 1459, 3578]
-
-
-def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
-    """Re-Escribir utilizando enumerate y agregando un nuevo componente.
-
-    Restricción:
-        - Utilizar un bucle FOR.
-        - No Utilizar la función range.
-        - No Utilizar la función zip.
-
-    Referencia: https://docs.python.org/3/library/functions.html#enumerate
-    """
+def maximo_cuadruple(a: float, b: float, c: float, d: float) -> float:
+    return max(a,b,c,d)
+    """Re-escribir para que tome 4 parámetros, utilizar la función max.
+    Referencia: https://docs.python.org/3/library/functions.html#max"""
 
 
 # NO MODIFICAR - INICIO
-respuesta = (
-    ("ventana", 100.48, 6852),
-    ("lámpara", 16.42, 1459),
-    ("shampoo", 5.2, 3578),
-)
-
-assert combinar_enumerate(nombre_articulos, precio_articulos, id_articulos) == respuesta  # noqa: E501
+assert maximo_cuadruple(1, 10, 5, -5) == 10
+assert maximo_cuadruple(4, 9, 18, 6) == 18
+assert maximo_cuadruple(24, 9, 18, 20) == 24
+assert maximo_cuadruple(24, 9, 18, 30) == 30
 # NO MODIFICAR - FIN
 
 
-###############################################################################
+# ###############################################################################
 
 
-id_articulos = [6852, 1459, 3578]
-
-
-def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tuple[Any]:  # noqa: E501
-    """Re-Escribir utilizando zip.
-
-    Restricción:
-        - Utilizar un bucle FOR.
-        - No utilizar la función range.
-        - No utilizar la función enumerate.
-        - No utilizar índices.
-    Referencia: https://docs.python.org/3/library/functions.html#zip
+def maximo_arbitrario(*args) -> float:
+    return max(args)
+    """Re-escribir para que tome una cantidad arbitraria de parámetros.
+    Referencia: https://docs.python.org/3/tutorial/controlflow.html#arbitrary-argument-lists # noqa: E501
     """
 
 
 # NO MODIFICAR - INICIO
-respuesta = (
-    ("ventana", 100.48, 6852),
-    ("lámpara", 16.42, 1459),
-    ("shampoo", 5.2, 3578),
-)
-
-assert combinar_zip(nombre_articulos, precio_articulos, id_articulos) == respuesta  # noqa: E501
-# NO MODIFICAR - FIN
-
-
-###############################################################################
-
-
-id_articulos = [6852, 1459, 3578]
-categoria_articulos = ["hogar", "libreria", "perfumeria"]
-importado_articulos = [True, False, True]
-
-
-def combinar_zip_args(*args) -> Tuple[Any]:
-    """Re-Escribir utilizando zip y una cantidad arbitraria de componentes.
-
-    Restricción:
-        - Utilizar un bucle FOR.
-        - No utilizar la función range.
-        - No utilizar la función enumerate.
-        - No utilizar índices.
-
-    Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
-    """
-
-
-# NO MODIFICAR - INICIO
-respuesta = (
-    ("ventana", 100.48, 6852, "hogar", True),
-    ("lámpara", 16.42, 1459, "libreria", False),
-    ("shampoo", 5.2, 3578, "perfumeria", True),
-)
-
-componentes = [
-    nombre_articulos,
-    precio_articulos,
-    id_articulos,
-    categoria_articulos,
-    importado_articulos,
-]
-
-assert combinar_zip_args(*componentes) == respuesta
+assert maximo_arbitrario(1, 10, 5, -5) == 10
+assert maximo_arbitrario(4, 9, 18, 6) == 18
+assert maximo_arbitrario(24, 9, 18, 20) == 24
+assert maximo_arbitrario(24, 9, 18, 30) == 30
 # NO MODIFICAR - FIN
