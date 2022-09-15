@@ -1,5 +1,6 @@
 """Único return vs múltiples return."""
 
+from cgitb import reset
 from typing import Union
 
 
@@ -14,7 +15,14 @@ def operacion_basica(a: float, b: float, multiplicar: bool) -> Union[float, str]
         - Utilizar IF con ELIF con ELSE.
         - No utilizar AND ni OR.
     """
-
+    if multiplicar==False:
+        try: 
+            num= a/b
+        except ZeroDivisionError as exception:
+            num = ("No se puede")
+    elif multiplicar==True:
+        num = a*b
+    return num
 
 # NO MODIFICAR - INICIO
 assert operacion_basica(1, 1, True) == 1
@@ -40,7 +48,14 @@ def operacion_multiple(a: float, b: float, multiplicar: bool) -> Union[float, st
         - No utilizar ELIF ni ELSE.
         - No utilizar AND ni OR.
     """
-
+    if multiplicar==False:
+        try:
+            return a/b
+        except ZeroDivisionError as exception:
+            return ("Operacion invalida")
+    if multiplicar==True:
+        return a*b
+    
 
 # NO MODIFICAR - INICIO
 assert operacion_multiple(1, 1, True) == 1
