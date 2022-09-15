@@ -8,6 +8,7 @@ los objetos de la capa de negocio.
 
 
 from typing import Any, List, Tuple
+from unittest import result
 
 nombre_articulos = ["ventana", "lámpara", "shampoo"]
 precio_articulos = [100.48, 16.42, 5.20]
@@ -25,6 +26,12 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
 
 
 # NO MODIFICAR - INICIO
+    resultado=[]
+    for i in range(len(nombres)):
+        resultado.append((nombres[i],precios[i]))
+    res=tuple(resultado)
+    return res
+    
 respuesta = (
     ("ventana", 100.48),
     ("lámpara", 16.42),
@@ -54,6 +61,15 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
 
 # NO MODIFICAR - INICIO
+    resultado=[]
+    var=0
+    for i in enumerate(precios,0):
+        resultado.append((nombres[var],precios[var],ids[var]))
+        var=var+1
+ 
+    res=tuple(resultado)
+    return res
+
 respuesta = (
     ("ventana", 100.48, 6852),
     ("lámpara", 16.42, 1459),
@@ -83,6 +99,15 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
 
 
 # NO MODIFICAR - INICIO
+    resultado=[]
+    for i in zip(nombres, precios, ids):
+        resultado.append(i)
+    res=tuple(resultado)  
+    print(res)  
+    return res
+        
+
+
 respuesta = (
     ("ventana", 100.48, 6852),
     ("lámpara", 16.42, 1459),
@@ -115,6 +140,13 @@ def combinar_zip_args(*args) -> Tuple[Any]:
 
 
 # NO MODIFICAR - INICIO
+    resultado=[]
+    for i in zip(*args):
+        resultado.append(i)
+    res=tuple(resultado)
+    print(res) 
+    return res 
+
 respuesta = (
     ("ventana", 100.48, 6852, "hogar", True),
     ("lámpara", 16.42, 1459, "libreria", False),
