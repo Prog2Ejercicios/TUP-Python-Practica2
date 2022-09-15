@@ -12,8 +12,18 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
         - Utilizar la función type.
         - No utilizar índices.
     """
+    
+    print(type([]) is list)
 
-
+    numeros_al_final_basico=[]
+    for i in lista:
+        if type(lista[i]) != type(1):
+            numeros_al_final_basico.insert(0, lista[i])
+        else:
+            numeros_al_final_basico.append(lista[i])
+    print(numeros_al_final_basico)
+    return numeros_al_final_basico(lista)
+      
 # NO MODIFICAR - INICIO
 assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]  # noqa: E501
 # NO MODIFICAR - FIN
