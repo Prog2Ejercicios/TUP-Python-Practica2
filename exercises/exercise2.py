@@ -11,7 +11,7 @@ def maximo_encadenado(a: float, b: float, c: float) -> float:
     Restricciones:
         - Utilizar comparaciones encadenadas.
         - Utilizar UNICAMENTE dos IFs
-        - No utilizar ELSE
+        - No utilizar     ELSE
         - No utilizar AND, OR o NOT
 
     Referencia: https://docs.python.org/3/reference/expressions.html#comparisons # noqa: E501
