@@ -75,7 +75,7 @@ assert es_vocal_if_in("A")
 
 
 def es_vocal_in(letra: str) -> bool:
-    """Re-escribir como expresión booleana utilizando el operador IN
+    """Re-escribir como expresión booleana utilizando el operador   IN
 
     Restricciónes:
         - No utilizar IF.
