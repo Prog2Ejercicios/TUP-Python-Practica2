@@ -6,6 +6,10 @@ def sumatoria_basico(n: int) -> int:
 
     Restricción: Utilizar un bucle FOR.
     """
+    r=0
+    for i in range(n+1):
+         r+=i
+    return r
 
 
 # NO MODIFICAR - INICIO
@@ -25,6 +29,9 @@ def sumatoria_sum(n: int) -> int:
     """
 
 
+# find sum of all marks
+    return sum(range(n+1))
+
 # NO MODIFICAR - INICIO
 assert sumatoria_sum(1) == 1
 assert sumatoria_sum(100) == 5050
@@ -34,6 +41,7 @@ assert sumatoria_sum(100) == 5050
 ###############################################################################
 
 
+from contextlib import nullcontext
 from typing import Iterable  # noqa: E402
 
 
@@ -47,6 +55,15 @@ def multiplicar_basico(numeros: Iterable[float]) -> float:
         - Utilizar múltiples Return
         - No utilizar ELSE
     """
+    num=1
+    i=0
+    if numeros!=[]:
+       for i in numeros:
+            num*=i
+       return num
+    
+    else:
+       return 0
 
 
 # NO MODIFICAR - INICIO

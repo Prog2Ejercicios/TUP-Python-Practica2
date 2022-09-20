@@ -7,6 +7,7 @@ los objetos de la capa de negocio.
 """
 
 
+from inspect import indentsize
 from typing import Any, List, Tuple
 
 nombre_articulos = ["ventana", "lámpara", "shampoo"]
@@ -22,14 +23,18 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
         - Utilizar la función range.
         - Utilizar índices.
     """
-
-
-# NO MODIFICAR - INICIO
+    a=[]
+    for ind in range(len(nombres)):
+        a.append((nombres[ind],precios[ind]))
+    
+    return tuple(a)
+    
+    # NO MODIFICAR - INICIO
 respuesta = (
-    ("ventana", 100.48),
-    ("lámpara", 16.42),
-    ("shampoo", 5.2),
-)
+        ("ventana", 100.48),
+        ("lámpara", 16.42),
+        ("shampoo", 5.2),
+    )
 
 assert combinar_basico(nombre_articulos, precio_articulos) == respuesta
 # NO MODIFICAR - FIN
@@ -51,9 +56,11 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
-
+#verrrrr
 
 # NO MODIFICAR - INICIO
+
+
 respuesta = (
     ("ventana", 100.48, 6852),
     ("lámpara", 16.42, 1459),
@@ -80,6 +87,15 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
         - No utilizar índices.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
+
+    a=[]
+    ind=0
+    for i in enumerate(precios,0):
+        a.append((nombres[ind],precios[ind],ids[ind]))
+        ind+=1
+
+    
+    return tuple(a)
 
 
 # NO MODIFICAR - INICIO
@@ -113,6 +129,7 @@ def combinar_zip_args(*args) -> Tuple[Any]:
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
 
+    
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -131,3 +148,4 @@ componentes = [
 
 assert combinar_zip_args(*componentes) == respuesta
 # NO MODIFICAR - FIN
+

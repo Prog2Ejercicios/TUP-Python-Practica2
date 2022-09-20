@@ -9,8 +9,22 @@ def superposicion_basico(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool
 
     Restricciones:
         - Utilizar dos bucles FOR anidados.
-        - Utilizar dos returns.
+        - Utilizar dos returns .
     """
+  
+    for x in lista_1:
+      for y in lista_2:
+           if x == y:
+              return True
+              
+    return False
+   
+              
+              
+          
+   
+         
+
 
 
 # NO MODIFICAR - INICIO
@@ -30,7 +44,12 @@ def superposicion_in(lista_1: Iterable[Any], lista_2: Iterable[Any]) -> bool:
         - Utilizar un único bucle FOR.
         - Utilizar dos returns.
     """
-
+            #ver          
+                      
+                    
+                
+           
+                
 
 # NO MODIFICAR - INICIO
 test_list = [1, "hello", 35.20]
